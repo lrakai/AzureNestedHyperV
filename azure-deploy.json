@@ -12,7 +12,7 @@
     "STRGVNETPrefix": "10.0.0.0/16",
     "STRGVNETSubnet1Name": "vmhost",
     "STRGVNETSubnet1Prefix": "10.0.0.0/24",
-    "HyperVHostName": "Lab-Host",
+    "HyperVHostName": "ca-lab-vm",
     "HyperVHostAdminUserName": "student",
     "HyperVHostAdminPassword": "1Cloud_Academy_Labs!",
     "HyperVHostImagePublisher": "MicrosoftWindowsServer",
