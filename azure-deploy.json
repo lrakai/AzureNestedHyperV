@@ -4,11 +4,12 @@
   "parameters": {
     "hypervHostDnsName": {
       "type": "string",
-      "defaultValue": "calabs",
+      "defaultValue": "ca-labs",
       "minLength": 1
     }
   },
   "variables": {
+    "hypervHostDnsName": "[concat(parameters('hypervHostDnsName'),'-',uniqueString(resourceGroup().id, resourceGroup().name))]",
     "STRGVNETPrefix": "10.0.0.0/16",
     "STRGVNETSubnet1Name": "vmhost",
     "STRGVNETSubnet1Prefix": "10.0.0.0/24",
@@ -69,7 +70,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('hypervHostDnsName')]"
+          "domainNameLabel": "[variables('hypervHostDnsName')]"
         }
       }
     },
