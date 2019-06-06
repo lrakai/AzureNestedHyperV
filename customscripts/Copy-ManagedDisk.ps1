@@ -19,7 +19,7 @@ storageAccountName=techvetsdisks
 storageContainerName=HyperV-CPSA
 
 #Provide the key of the storage account where you want to copy the VHD 
-storageAccountKey=mystorageaccountkey
+storageAccountKey=<INSERT_STORAGE_ACCOUNT_KEY>
 
 #Provide the name of the destination VHD file to which the VHD of the managed disk will be copied.
 destinationVHDFileName=cpsa.vhd
