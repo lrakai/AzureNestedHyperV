@@ -18,7 +18,7 @@
     "HyperVHostAdminPassword": "1Cloud_Academy_Labs!",
     "HyperVHostImagePublisher": "MicrosoftWindowsServer",
     "HyperVHostImageOffer": "WindowsServer",
-    "HyperVHostWindowsOSVersion": "2016-Datacenter",
+    "HyperVHostWindowsOSVersion": "2016-Datacenter-smalldisk",
     "HyperVHostOSDiskName": "[concat(variables('HyperVHostName'), '-OSDISK')]",
     "HyperVHostVmSize": "Standard_D4s_v3",
     "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'lab-vnet')]",
