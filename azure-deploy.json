@@ -10,9 +10,9 @@
   },
   "variables": {
     "STRGVNETPrefix": "10.0.0.0/16",
-    "STRGVNETSubnet1Name": "VMHOST",
+    "STRGVNETSubnet1Name": "vmhost",
     "STRGVNETSubnet1Prefix": "10.0.0.0/24",
-    "HyperVHostName": "HYPERVHOST",
+    "HyperVHostName": "Lab-Host",
     "HyperVHostAdminUserName": "student",
     "HyperVHostAdminPassword": "1Cloud_Academy_Labs!",
     "HyperVHostImagePublisher": "MicrosoftWindowsServer",
@@ -20,10 +20,10 @@
     "HyperVHostWindowsOSVersion": "2016-Datacenter",
     "HyperVHostOSDiskName": "[concat(variables('HyperVHostName'), '-OSDISK')]",
     "HyperVHostVmSize": "Standard_D4s_v3",
-    "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'STRGVNET')]",
+    "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'lab-vnet')]",
     "HyperVHostSubnetRef": "[concat(variables('HyperVHostVnetID'), '/subnets/', variables('STRGVNETSubnet1Name'))]",
-    "HyperVHostNicName": "[concat(variables('HyperVHostName'), '-NIC')]",
-    "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-PIP')]",
+    "HyperVHostNicName": "[concat(variables('HyperVHostName'), '-nic')]",
+    "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-pip')]",
     "HyperVHostConfigArchiveFolder": ".",
     "HyperVHostConfigArchiveFileName": "HyperVHostConfig.zip",
     "HyperVHostConfigURL": "https://github.com/deltadan/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.zip?raw=true",
@@ -33,13 +33,13 @@
   },
   "resources": [
     {
-      "name": "STRGVNET",
+      "name": "lab-vnet",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [],
       "tags": {
-        "displayName": "STRGVNET"
+        "displayName": "lab-vnet"
       },
       "properties": {
         "addressSpace": {
@@ -64,7 +64,7 @@
       "apiVersion": "2017-10-01",
       "dependsOn": [],
       "tags": {
-        "displayName": "HyperVHost-PUBIP"
+        "displayName": "Host-ip"
       },
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
@@ -79,11 +79,11 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2017-10-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', 'STRGVNET')]",
+        "[resourceId('Microsoft.Network/virtualNetworks', 'lab-vnet')]",
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('HyperVHost-PUBIPName'))]"
       ],
       "tags": {
-        "displayName": "HyperVHostNic"
+        "displayName": "HostNic"
       },
       "properties": {
         "ipConfigurations": [
@@ -111,7 +111,7 @@
         "[resourceId('Microsoft.Network/networkInterfaces', variables('HyperVHostNicName'))]"
       ],
       "tags": {
-        "displayName": "HyperVHost"
+        "displayName": "Lab-Host"
       },
       "properties": {
         "hardwareProfile": {
