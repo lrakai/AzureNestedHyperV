@@ -1,5 +1,6 @@
 #Provide the subscription Id where managed disk is created
 # subscriptionId=yourSubscriptionId # omit for use in Azure Cloud Shell
+# az account set --subscription $subscriptionId
 
 #Provide the name of your resource group where managed disk is created
 resourceGroupName=QACA
@@ -22,8 +23,6 @@ storageAccountKey=mystorageaccountkey
 
 #Provide the name of the destination VHD file to which the VHD of the managed disk will be copied.
 destinationVHDFileName=cpsa.vhd
-
-az account set --subscription $subscriptionId
 
 sas=$(az disk grant-access --resource-group $resourceGroupName --name $diskName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
