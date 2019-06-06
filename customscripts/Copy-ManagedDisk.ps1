@@ -16,7 +16,7 @@ sasExpiryDuration=3600
 storageAccountName=techvetsdisks
 
 #Name of the storage container where the downloaded VHD will be stored
-storageContainerName=HyperV-CPSA
+storageContainerName=hyperv-cpsa
 
 #Provide the key of the storage account where you want to copy the VHD 
 storageAccountKey=<INSERT_STORAGE_ACCOUNT_KEY>
