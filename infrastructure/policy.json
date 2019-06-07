@@ -81,12 +81,12 @@
           "allowedServices": {
               "value": [
                   "Microsoft.Compute/virtualMachines",
+                  "Microsoft.Compute/disks",
                   "Microsoft.Storage/storageAccounts",
                   "Microsoft.Network/networkSecurityGroups",
                   "Microsoft.Network/publicIpAddresses",
                   "Microsoft.Network/networkInterfaces",
-                  "Microsoft.Network/virtualNetworks",
-                  "Microsoft.Compute/virtualMachines/extensions"
+                  "Microsoft.Network/virtualNetworks"
               ]
           },
           "allowedVmSkus": {
