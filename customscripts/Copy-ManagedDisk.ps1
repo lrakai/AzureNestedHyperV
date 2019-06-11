@@ -28,3 +28,5 @@ sas=$(az disk grant-access --resource-group $resourceGroupName --name $diskName 
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 
+# Copy across subscriptions with azcopy (Disk can only be used in the same subscription)
+# azcopy --source "https://acct1.blob.core.windows.net/hyperv-cpsa/cpsa.vhd" --destination "https://acct2.blob.core.windows.net/hyperv-cpsa/cpsa.vhd" --dest-key '...'
