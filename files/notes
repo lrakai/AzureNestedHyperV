@@ -1,0 +1,15 @@
+#Install virtual box, 7-zip
+#Download Kali Linux, and images
+
+mkdir D:\VMs
+cd D:\VMs
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -OutFile "Metasploitable2.ova" https://ca-qa-ova.s3-us-west-2.amazonaws.com/Metasploitable+2.ova
+& 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' clonehd --format vhd '.\Metasploitable2\Metasploitable2-disk001.vmdk' Metasploitable2.vhd
+
+Invoke-WebRequest -OutFile "Win7.ova" https://ca-qa-ova.s3-us-west-2.amazonaws.com/CPSA_Win_7.ova
+& 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' clonehd --format vhd '.\Win7\CPSA Win 7-disk001.vmdk' Win7.vhd
+
+Invoke-WebRequest -OutFile "kali-linux-2019.2-amd64.iso" https://cdimage.kali.org/kali-2019.2/kali-linux-2019.2-amd64.iso
+Invoke-WebRequest -OutFile virtualbox.exe https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe
+Invoke-WebRequest -OutFile 7zip.exe https://www.7-zip.org/a/7z1900.exe
