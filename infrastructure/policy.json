@@ -9,6 +9,7 @@
                 "Microsoft.Authorization/*/Write",
                 "Microsoft.Authorization/elevateAccess/Action",
                 "Microsoft.MarketplaceOrdering/*",
+                "Microsoft.Compute/virtualmachines/write",
                 "Microsoft.Compute/disks/write",
                 "Microsoft.Storage/storageAccounts/blobServices/write",
                 "Microsoft.Storage/storageAccounts/blobServices/containers/write",
