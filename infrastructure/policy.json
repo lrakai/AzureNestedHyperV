@@ -103,7 +103,7 @@
         },
         "allowedVmSkus": {
             "value": [
-                "Standard_D4s_v3"
+                "Standard_D2as_v3"
             ]
         }
     }
