@@ -20,7 +20,7 @@
     "HyperVHostImageOffer": "WindowsServer",
     "HyperVHostWindowsOSVersion": "2016-Datacenter-smalldisk",
     "HyperVHostOSDiskName": "[concat(variables('HyperVHostName'), '-OSDISK')]",
-    "HyperVHostVmSize": "Standard_D4s_v3",
+    "HyperVHostVmSize": "Standard_D2s_v3",
     "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'lab-vnet')]",
     "HyperVHostSubnetRef": "[concat(variables('HyperVHostVnetID'), '/subnets/', variables('STRGVNETSubnet1Name'))]",
     "HyperVHostNicName": "[concat(variables('HyperVHostName'), '-nic')]",
