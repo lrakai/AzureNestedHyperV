@@ -41,6 +41,17 @@ New-VM -Name $vmName -MemoryStartupBytes 1GB -BootDevice VHD -VHDPath $vhd -Gene
 Get-VM –VMname $vmName | Set-VM –AutomaticStartAction Start
 Start-VM -Name $vmName
 
+# PS Remoting
+
+#apt-get update
+## Install rdp
+#apt-get install xrdp
+#systemctl enable --now xrdp
+#systemctl enable --now xrdp-sesman
+## Install Azure VM agent (https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/update-linux-agent)
+#apt-get install waagent
+#sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+#systemctl restart walinuxagent.service
 #auto eth0
 #iface eth0 inet static
 #    address 192.168.0.101
