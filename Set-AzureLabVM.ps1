@@ -33,9 +33,9 @@ function Set-AzureVHD {
         $container = Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup -StorageAccountName $storageAccount -Name $ContainerName 
     }
     catch {
-        New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup -AccountName $StorageAccount -ContainerName $ContainerName -PublicAccess Blob
+        New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup -AccountName $StorageAccount -ContainerName $ContainerName -PublicAccess Blob | Out-Null
     }
-    Add-AzureRmVhd -ResourceGroupName $ResourceGroup -Destination "https://$StorageAccount.blob.core.windows.net/$ContainerName/$blobName" -LocalFilePath $Vhd -NumberOfUploaderThreads 32
+    Add-AzureRmVhd -ResourceGroupName $ResourceGroup -Destination "https://$StorageAccount.blob.core.windows.net/$ContainerName/$blobName" -LocalFilePath $Vhd -NumberOfUploaderThreads 32 | Out-Null
     $blobName
 }
 
