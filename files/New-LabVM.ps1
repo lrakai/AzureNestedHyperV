@@ -10,6 +10,9 @@ Invoke-WebRequest -OutFile virtualbox.exe https://download.virtualbox.org/virtua
 Invoke-WebRequest -Outfile $vboxExtensionPack https://download.virtualbox.org/virtualbox/$vboxVersion/$vboxExtensionPack
 Invoke-WebRequest -OutFile 7zip.exe https://www.7-zip.org/a/7z1900.exe
 
+#. .\FtpHelpers.ps1
+#Get-ImageFromFtp -Image "QACDADS" -DownloadPath "D:"
+
 ##Install virtual box, 7-zip
 
 Write-Output y | & "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" extpack install --replace $vboxExtensionPack
@@ -24,11 +27,11 @@ mkdir D:\VMs
 Set-Location D:\VMs
 Invoke-WebRequest -OutFile $image "https://techvetsdisks1.blob.core.windows.net/nested-images/$image"
 & 'C:\Program Files (x86)\7-Zip\7z.exe' x "D:\VMs\$image"
-$vmdk=(Get-Childitem –Path D:\VMs -Include *vmdk -File -Recurse -ErrorAction SilentlyContinue)[0].FullName
-$imageItem=(Get-Item $image)
-$vhdDir="C:\Images\"
+$vmdk = (Get-Childitem –Path D:\VMs -Include *vmdk -File -Recurse -ErrorAction SilentlyContinue)[0].FullName
+$imageItem = (Get-Item $image)
+$vhdDir = "C:\Images\"
 mkdir $vhdDir
-$vhd=($vhdDir + $imageItem.BaseName + ".vhd")
+$vhd = ($vhdDir + $imageItem.BaseName + ".vhd")
 & 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' clonehd --format vhd $vmdk $vhd
 
 
