@@ -41,6 +41,9 @@ New-VM -Name $vmName -MemoryStartupBytes 1GB -BootDevice VHD -VHDPath $vhd -Gene
 Get-VM –VMname $vmName | Set-VM –AutomaticStartAction Start
 Start-VM -Name $vmName
 
+
+### Prepare Linux VM for Azure https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic
+
 # PS Remoting
 
 #apt-get update
@@ -52,6 +55,12 @@ Start-VM -Name $vmName
 #apt-get install waagent
 #sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 #systemctl restart walinuxagent.service
+# Use DHCP when moving to Azure
+#auto eth0
+#allow-hotplug eth0
+#iface eth0 inet dhcp
+
+# Static on local hyperv
 #auto eth0
 #iface eth0 inet static
 #    address 192.168.0.101
